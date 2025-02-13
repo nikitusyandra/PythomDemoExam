@@ -57,10 +57,6 @@ class Database:
         self.conn.close()
 
 
-class MainWindow:
-    pass
-
-
 class MainWindow(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
@@ -102,6 +98,8 @@ class MainWindow(QtWidgets.QMainWindow):
         details = self.db.get_member_details(member_id)
         budget_status = self.db.calculate_budget_ratio(member_id)
 
+
+
         if details:
             full_name, birth_date, position, company, salary = details
             age = QtCore.QDate.currentDate().year() - birth_date.year
@@ -116,8 +114,9 @@ class MainWindow(QtWidgets.QMainWindow):
         self.db.close()
         event.accept()
 
-    if __name__ == "__main__":
-        app = QtWidgets.QApplication(sys.argv)
-        window = MainWindow()
-        window.show()
-        sys.exit(app.exec())
+
+if __name__ == "__main__":
+    app = QtWidgets.QApplication(sys.argv)
+    window = MainWindow()
+    window.show()
+    sys.exit(app.exec())
